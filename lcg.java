@@ -21,7 +21,7 @@ public class lcg {
 	        return gcd(number2, number1 % number2);
 	 }
 	 
-	// computeL() uses built-in random number generator to compute l-bit integer m
+	// computeX() uses built-in random number generator to compute l-bit integer m
 	// in 2^(l-1) < m < 2^l along with a, b, x0 (seed) values
 	 
 	// returns first n+1 elements x0, x1, xn in linear congruential sequence
