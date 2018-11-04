@@ -17,7 +17,8 @@ object Lab4 {
         options.addOption("s", "seed", true,
                 "Initial value (\"seed\") for random number generator")
         options.addOption("f", "formula", true,
-                "Formula for random number generator to generate random numbers. " + "Can be either Linear, Quadratic or Cubic. Default value is Linear")
+                "Formula for random number generator to generate random numbers. "
+                        + "Can be either Linear, Quadratic or Cubic. Default value is Linear")
 
         val parser = DefaultParser()
         try {
