@@ -17,12 +17,15 @@ import java.nio.ByteBuffer;
 public class PRNG {
 
     // used to generate parameters of congruential generators within modulus' range
-    private final UniformRandomProvider rand;
+    private final UniformRandomProvider rand = RandomSource.create(RandomSource.MWC_256);
     private long seed;
 
     public PRNG() {
         seed = RandomSource.createLong();
-        rand = RandomSource.create(RandomSource.MWC_256);
+    }
+
+    public PRNG(long seed) {
+        this.seed = seed;
     }
 
     // computeLCG() uses Apache's random number generator to compute l-bit integer m
