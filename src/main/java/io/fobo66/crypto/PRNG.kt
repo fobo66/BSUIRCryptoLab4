@@ -15,7 +15,7 @@ import java.nio.ByteBuffer
 class PRNG {
 
     // used to generate parameters of congruential generators within modulus' range
-    private val rand = RandomSource.create(RandomSource.MWC_256)
+    private val rand = RandomSource.MWC_256.create()
     private var seed: Long = 0
 
     constructor() {

@@ -34,12 +34,12 @@ object Lab4 {
 
             if (cmd.hasOption('f')) {
                 formula = cmd.getOptionValue('f')
-                println("Using ${formula.toLowerCase()} formula for generating random numbers...")
+                println("Using ${formula.lowercase()} formula for generating random numbers...")
             }
 
             for (i in 0 until generatedNumbersCount) {
 
-                randomNumber = when (formula.toLowerCase()) {
+                randomNumber = when (formula.lowercase()) {
                     "linear" -> prng.computeLCG()
                     "quadratic" -> prng.computeQuadraticLCG()
                     "cubic" -> prng.computeCubicLCG()

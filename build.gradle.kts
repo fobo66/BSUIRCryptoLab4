@@ -1,10 +1,10 @@
 plugins {
     application
-    kotlin("jvm") version "1.3.0"
+    kotlin("jvm") version "1.6.21"
 }
 
 application {
-    mainClassName = "io.fobo66.crypto.Lab4"
+    mainClass.set("io.fobo66.crypto.Lab4")
 }
 
 allprojects {
@@ -13,11 +13,10 @@ allprojects {
     }
 
     dependencies {
-        implementation("org.apache.commons:commons-rng-core:1.1")
-        implementation("org.apache.commons:commons-rng-simple:1.1")
-        implementation("org.apache.commons:commons-rng-client-api:1.1")
-        implementation("org.jetbrains:annotations:16.0.3")
+        implementation("org.apache.commons:commons-rng-core:1.4")
+        implementation("org.apache.commons:commons-rng-simple:1.4")
+        implementation("org.apache.commons:commons-rng-client-api:1.4")
+        implementation("org.jetbrains:annotations:23.0.0")
         implementation("commons-cli:commons-cli:1.5.0")
-        implementation(kotlin("stdlib-jdk8"))
     }
 }
