@@ -17,7 +17,7 @@ allprojects {
         implementation("org.apache.commons:commons-rng-simple:1.1")
         implementation("org.apache.commons:commons-rng-client-api:1.1")
         implementation("org.jetbrains:annotations:16.0.3")
-        implementation("commons-cli:commons-cli:1.4")
+        implementation("commons-cli:commons-cli:1.5.0")
         implementation(kotlin("stdlib-jdk8"))
     }
 }
