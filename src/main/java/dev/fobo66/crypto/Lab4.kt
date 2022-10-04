@@ -32,16 +32,16 @@ fun main(args: Array<String>) {
 
     parser.parse(args)
 
-    val prng = PRNG(seed ?: 0)
+    val generator = PseudoRandomNumberGenerator(seed ?: 0)
 
     println("Using $formula formula for generating random numbers...")
 
     for (i in 0 until generatedNumbersCount) {
 
         randomNumber = when (formula) {
-            Formula.Linear -> prng.computeLCG()
-            Formula.Quadratic -> prng.computeQuadraticLCG()
-            Formula.Cubic -> prng.computeCubicLCG()
+            Formula.Linear -> generator.computeLCG()
+            Formula.Quadratic -> generator.computeQuadraticLCG()
+            Formula.Cubic -> generator.computeCubicLCG()
         }
         println(randomNumber)
     }

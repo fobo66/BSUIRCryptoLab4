@@ -13,7 +13,7 @@ import org.apache.commons.rng.simple.RandomSource
 import java.nio.ByteBuffer
 import kotlin.math.abs
 
-class PRNG(seed: Int = 0) {
+class PseudoRandomNumberGenerator(seed: Int = 0) {
 
     // used to generate parameters of congruential generators within modulus' range
     private val rand = RandomSource.MWC_256.create()
