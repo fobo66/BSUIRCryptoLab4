@@ -1,5 +1,5 @@
-package dev.fobo66.crypto;
+package dev.fobo66.crypto
 
-public enum DESMode {
+enum class DESMode {
     ECB, CBC, CFB, OFB, CTR
 }
