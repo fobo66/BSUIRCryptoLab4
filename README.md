@@ -1,9 +1,8 @@
 # BSUIRCryptoLab4 – LCG
-===
 
-Simple linear congruential generator: http://en.wikipedia.org/wiki/Linear_congruential_generator
+Simple [linear congruential generator](https://en.wikipedia.org/wiki/Linear_congruential_generator)
 
-Modifications:
+Features:
 
  * Added randomness and safety by DES cipher in CTR mode
  * Replaced builtin Random with Apache Commons RNG
