@@ -1,4 +1,4 @@
-package io.fobo66.crypto;
+package dev.fobo66.crypto;
 
 import java.util.Arrays;
 

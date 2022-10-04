@@ -6,7 +6,7 @@
     http://en.wikipedia.org/wiki/Linear_congruential_generator
     3/6/2014
 */
-package io.fobo66.crypto
+package dev.fobo66.crypto
 
 import org.apache.commons.rng.simple.RandomSource
 
