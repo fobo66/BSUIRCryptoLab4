@@ -1,56 +1,48 @@
 package dev.fobo66.crypto
 
-import org.apache.commons.cli.DefaultParser
-import org.apache.commons.cli.Options
-import org.apache.commons.cli.ParseException
+import kotlinx.cli.ArgParser
+import kotlinx.cli.ArgType
+import kotlinx.cli.default
 
 fun main(args: Array<String>) {
-    var generatedNumbersCount = 10
-    var prng = PRNG()
-    var formula = "Linear"
     var randomNumber: Long
 
-    val options = Options()
-    options.addOption("n", true, "Count of generated random numbers")
-    options.addOption(
-        "s", "seed", true,
-        "Initial value (\"seed\") for random number generator"
+    val parser = ArgParser("lab4")
+
+    val generatedNumbersCount by parser.option(
+        ArgType.Int,
+        shortName = "n",
+        description = "Count of generated random numbers"
+    ).default(10)
+
+    val seed by parser.option(
+        ArgType.Int,
+        shortName = "s",
+        fullName = "seed",
+        description = "Initial value (\"seed\") for random number generator"
     )
-    options.addOption(
-        "f", "formula", true,
-        "Formula for random number generator to generate random numbers. "
+
+    val formula by parser.option(
+        ArgType.Choice<Formula>(),
+        shortName = "f",
+        fullName = "formula",
+        description = "Formula for random number generator to generate random numbers. "
                 + "Can be either Linear, Quadratic or Cubic. Default value is Linear"
-    )
+    ).default(Formula.Linear)
 
-    val parser = DefaultParser()
-    try {
-        val cmd = parser.parse(options, args)
+    parser.parse(args)
 
-        if (cmd.hasOption('n')) {
-            generatedNumbersCount = Integer.parseInt(cmd.getOptionValue('n'))
+    val prng = PRNG(seed ?: 0)
+
+    println("Using $formula formula for generating random numbers...")
+
+    for (i in 0 until generatedNumbersCount) {
+
+        randomNumber = when (formula) {
+            Formula.Linear -> prng.computeLCG()
+            Formula.Quadratic -> prng.computeQuadraticLCG()
+            Formula.Cubic -> prng.computeCubicLCG()
         }
-
-        if (cmd.hasOption('s')) {
-            prng = PRNG(java.lang.Long.parseLong(cmd.getOptionValue('s')))
-        }
-
-        if (cmd.hasOption('f')) {
-            formula = cmd.getOptionValue('f')
-            println("Using ${formula.lowercase()} formula for generating random numbers...")
-        }
-
-        for (i in 0 until generatedNumbersCount) {
-
-            randomNumber = when (formula.lowercase()) {
-                "linear" -> prng.computeLCG()
-                "quadratic" -> prng.computeQuadraticLCG()
-                "cubic" -> prng.computeCubicLCG()
-                else -> throw IllegalArgumentException("Formula can be either Linear, Quadratic or Cubic")
-            }
-            println(randomNumber)
-        }
-    } catch (e: ParseException) {
-        throw RuntimeException("Invalid arguments", e)
+        println(randomNumber)
     }
-
 }

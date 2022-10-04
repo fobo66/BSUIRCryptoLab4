@@ -24,5 +24,5 @@ dependencies {
     implementation("org.apache.commons:commons-rng-simple:1.4")
     implementation("org.apache.commons:commons-rng-client-api:1.4")
     implementation("org.jetbrains:annotations:23.0.0")
-    implementation("commons-cli:commons-cli:1.5.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-cli:0.3.5")
 }

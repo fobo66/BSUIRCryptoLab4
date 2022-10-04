@@ -11,19 +11,20 @@ package dev.fobo66.crypto
 import org.apache.commons.rng.simple.RandomSource
 
 import java.nio.ByteBuffer
+import kotlin.math.abs
 
-class PRNG {
+class PRNG(seed: Int = 0) {
 
     // used to generate parameters of congruential generators within modulus' range
     private val rand = RandomSource.MWC_256.create()
-    private var seed: Long = 0
+    private var generatorSeed: Long
 
-    constructor() {
-        seed = RandomSource.createLong()
-    }
-
-    constructor(seed: Long) {
-        this.seed = seed
+    init {
+        generatorSeed = if (seed == 0) {
+            RandomSource.createLong()
+        } else {
+            seed.toLong()
+        }
     }
 
     // computeLCG() uses Apache's random number generator to compute l-bit integer m
@@ -80,11 +81,11 @@ class PRNG {
 
     private fun calculateModulus(): Long {
         val modulusBytes = DES.encrypt(seedToByteArray(), generateKey(), DESMode.CTR)
-        return Math.abs(ByteBuffer.wrap(modulusBytes).long)
+        return abs(ByteBuffer.wrap(modulusBytes).long)
     }
 
     private fun seedToByteArray(): ByteArray {
-        return ByteBuffer.allocate(java.lang.Long.SIZE / java.lang.Byte.SIZE).putLong(seed++).array()
+        return ByteBuffer.allocate(java.lang.Long.SIZE / java.lang.Byte.SIZE).putLong(generatorSeed++).array()
     }
 
     private fun generateKey(): ByteArray {
