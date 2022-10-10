@@ -20,7 +20,7 @@ tasks.withType<KotlinCompile>().configureEach {
 }
 
 dependencies {
-    implementation("org.apache.commons:commons-rng-core:1.4")
+    implementation("org.apache.commons:commons-rng-core:1.5")
     implementation("org.apache.commons:commons-rng-simple:1.4")
     implementation("org.apache.commons:commons-rng-client-api:1.4")
     implementation("org.jetbrains:annotations:23.0.0")
