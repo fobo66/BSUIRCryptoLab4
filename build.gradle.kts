@@ -9,8 +9,8 @@ application {
     mainClass.set("dev.fobo66.crypto.Lab4Kt")
 }
 
-tasks.withType<KotlinCompile>().configureEach {
-    kotlinOptions.jvmTarget = "11"
+kotlin {
+    jvmToolchain(17)
 }
 
 dependencies {
