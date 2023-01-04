@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     application
     kotlin("jvm") version libs.versions.kotlin
@@ -11,6 +9,14 @@ application {
 
 kotlin {
     jvmToolchain(17)
+}
+
+testing {
+    suites {
+        val test by getting(JvmTestSuite::class) {
+            useKotlinTest(libs.versions.kotlin)
+        }
+    }
 }
 
 dependencies {
