@@ -2,17 +2,11 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     application
-    kotlin("jvm") version "1.8.0"
+    kotlin("jvm") version libs.versions.kotlin
 }
 
 application {
     mainClass.set("dev.fobo66.crypto.Lab4Kt")
-}
-
-allprojects {
-    repositories {
-        mavenCentral()
-    }
 }
 
 tasks.withType<KotlinCompile>().configureEach {
@@ -20,9 +14,8 @@ tasks.withType<KotlinCompile>().configureEach {
 }
 
 dependencies {
-    implementation("org.apache.commons:commons-rng-core:1.5")
-    implementation("org.apache.commons:commons-rng-simple:1.5")
-    implementation("org.apache.commons:commons-rng-client-api:1.5")
-    implementation("org.jetbrains:annotations:23.1.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-cli:0.3.5")
+    implementation(libs.rng.core)
+    implementation(libs.rng.simple)
+    implementation(libs.rng.client)
+    implementation(libs.cli)
 }
