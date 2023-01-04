@@ -27,8 +27,10 @@ class PseudoRandomNumberGenerator(seed: Int = 0) {
         }
     }
 
-    // computeLCG() uses Apache's random number generator to compute l-bit integer m
-    // in 2^(l-1) < m < 2^l along with a, b, seed values
+    /**
+     * computeLCG() uses Apache's random number generator to compute l-bit integer m
+     * in 2^(l-1) < m < 2^l along with a, b, seed values
+    */
     fun computeLCG(): Long {
 
         // compute LCG modulus
@@ -44,7 +46,9 @@ class PseudoRandomNumberGenerator(seed: Int = 0) {
         return (a * x0 + b) % m
     }
 
-    // uses quadratic equation as LCG formula
+    /**
+     *  Use quadratic equation as LCG formula
+     *  */
     fun computeQuadraticLCG(): Long {
 
         // compute LCG modulus
@@ -61,7 +65,9 @@ class PseudoRandomNumberGenerator(seed: Int = 0) {
         return (a * x0 * x0 + b * x0 + c) % m
     }
 
-    // uses cubic equation as LCG formula
+    /**
+     * Use cubic equation as LCG formula
+     */
     fun computeCubicLCG(): Long {
 
         // compute LCG modulus
