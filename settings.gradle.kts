@@ -13,7 +13,7 @@ dependencyResolutionManagement {
     }
     versionCatalogs {
         create("libs") {
-            version("kotlin", "1.8.0")
+            version("kotlin", "1.8.10")
             version("rng", "1.5")
             library("cli", "org.jetbrains.kotlinx:kotlinx-cli:0.3.5")
             library("rng.core", "org.apache.commons", "commons-rng-core").versionRef("rng")
