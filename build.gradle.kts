@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     application
     kotlin("jvm") version libs.versions.kotlin
+    alias(libs.plugins.detekt)
 }
 
 application {

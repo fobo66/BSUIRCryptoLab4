@@ -9,30 +9,32 @@
 package dev.fobo66.crypto
 
 import org.apache.commons.rng.simple.RandomSource
-
 import java.nio.ByteBuffer
 import kotlin.math.abs
 
-class PseudoRandomNumberGenerator(seed: Int = 0) {
+private const val KEY_SIZE = 8
 
+class PseudoRandomNumberGenerator(
+    seed: Int = 0,
+) {
     // used to generate parameters of congruential generators within modulus' range
     private val rand = RandomSource.MWC_256.create()
     private var generatorSeed: Long
 
     init {
-        generatorSeed = if (seed == 0) {
-            RandomSource.createLong()
-        } else {
-            seed.toLong()
-        }
+        generatorSeed =
+            if (seed == 0) {
+                RandomSource.createLong()
+            } else {
+                seed.toLong()
+            }
     }
 
     /**
      * computeLCG() uses Apache's random number generator to compute l-bit integer m
      * in 2^(l-1) < m < 2^l along with a, b, seed values
-    */
+     */
     fun computeLCG(): Long {
-
         // compute LCG modulus
         val m = calculateModulus()
 
@@ -50,7 +52,6 @@ class PseudoRandomNumberGenerator(seed: Int = 0) {
      *  Use quadratic equation as LCG formula
      *  */
     fun computeQuadraticLCG(): Long {
-
         // compute LCG modulus
         val m = calculateModulus()
 
@@ -69,7 +70,6 @@ class PseudoRandomNumberGenerator(seed: Int = 0) {
      * Use cubic equation as LCG formula
      */
     fun computeCubicLCG(): Long {
-
         // compute LCG modulus
         val m = calculateModulus()
 
@@ -90,14 +90,12 @@ class PseudoRandomNumberGenerator(seed: Int = 0) {
         return abs(ByteBuffer.wrap(modulusBytes).long)
     }
 
-    private fun seedToByteArray(): ByteArray {
-        return ByteBuffer.allocate(java.lang.Long.SIZE / java.lang.Byte.SIZE).putLong(generatorSeed++).array()
-    }
+    private fun seedToByteArray(): ByteArray =
+        ByteBuffer.allocate(java.lang.Long.SIZE / java.lang.Byte.SIZE).putLong(generatorSeed++).array()
 
     private fun generateKey(): ByteArray {
-        val key = ByteArray(8)
+        val key = ByteArray(KEY_SIZE)
         rand.nextBytes(key)
         return key
     }
-
 }

@@ -19,6 +19,7 @@ dependencyResolutionManagement {
             library("rng.core", "org.apache.commons", "commons-rng-core").versionRef("rng")
             library("rng.simple", "org.apache.commons", "commons-rng-simple").versionRef("rng")
             library("rng.client", "org.apache.commons", "commons-rng-client-api").versionRef("rng")
+            plugin("detekt", "io.gitlab.arturbosch.detekt").version("1.23.7")
         }
     }
 }
