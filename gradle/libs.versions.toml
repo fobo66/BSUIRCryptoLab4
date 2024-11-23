@@ -1,0 +1,15 @@
+[versions]
+kotlin = "2.0.21"
+detekt = "1.23.7"
+cli = "0.3.6"
+rng = "1.6"
+
+[libraries]
+cli = { module = "org.jetbrains.kotlinx:kotlinx-cli", version.ref = "cli" }
+rng-core = { group = "org.apache.commons", name = "commons-rng-core", version.ref = "rng" }
+rng-simple = { group = "org.apache.commons", name = "commons-rng-simple", version.ref = "rng" }
+rng-client = { group = "org.apache.commons", name = "commons-rng-client-api", version.ref = "rng" }
+
+[plugins]
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
