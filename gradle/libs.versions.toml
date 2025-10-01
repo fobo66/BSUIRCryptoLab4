@@ -1,6 +1,6 @@
 [versions]
 kotlin = "2.2.20"
-detekt = "1.23.8"
+detekt = "2.0.0-alpha.0"
 cli = "0.3.6"
 rng = "1.6"
 
@@ -11,5 +11,5 @@ rng-simple = { group = "org.apache.commons", name = "commons-rng-simple", versio
 rng-client = { group = "org.apache.commons", name = "commons-rng-client-api", version.ref = "rng" }
 
 [plugins]
-detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+detekt = { id = "dev.detekt", version.ref = "detekt" }
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

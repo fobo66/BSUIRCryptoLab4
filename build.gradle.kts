@@ -30,11 +30,11 @@ testing {
 }
 
 tasks {
-    withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+    withType<dev.detekt.gradle.Detekt>().configureEach {
         // Target version of the generated JVM bytecode. It is used for type resolution.
         jvmTarget = "21"
     }
-    withType<io.gitlab.arturbosch.detekt.DetektCreateBaselineTask>().configureEach {
+    withType<dev.detekt.gradle.DetektCreateBaselineTask>().configureEach {
         // Target version of the generated JVM bytecode. It is used for type resolution.
         jvmTarget = "21"
     }
