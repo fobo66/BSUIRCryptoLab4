@@ -14,7 +14,7 @@ jobs:
           distribution: 'liberica'
           java-version: '25'
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
+        uses: gradle/actions/setup-gradle@v5
         with:
           validate-wrappers: true
           cache-encryption-key: ${{ secrets.GradleEncryptionKey }}
@@ -31,4 +31,4 @@ jobs:
           distribution: 'liberica'
           java-version: '25'
       - name: Generate and submit dependency graph
-        uses: gradle/actions/dependency-submission@v4
+        uses: gradle/actions/dependency-submission@v5
