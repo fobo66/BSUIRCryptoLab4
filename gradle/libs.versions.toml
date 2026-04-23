@@ -1,5 +1,5 @@
 [versions]
-kotlin = "2.3.20"
+kotlin = "2.3.21"
 detekt = "2.0.0-alpha.2"
 cli = "0.3.6"
 rng = "1.7"
