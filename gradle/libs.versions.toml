@@ -1,6 +1,6 @@
 [versions]
 kotlin = "2.4.0"
-detekt = "2.0.0-alpha.4"
+detekt = "2.0.0-alpha.5"
 cli = "0.3.6"
 rng = "1.7"
 
