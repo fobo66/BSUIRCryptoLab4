@@ -1,11 +1,11 @@
 [versions]
-kotlin = "2.4.0"
+clikt = "5.1.0"
 detekt = "2.0.0-alpha.5"
-cli = "0.3.6"
+kotlin = "2.4.0"
 rng = "1.7"
 
 [libraries]
-cli = { module = "org.jetbrains.kotlinx:kotlinx-cli", version.ref = "cli" }
+clikt = { module = "com.github.ajalt.clikt:clikt", version.ref = "clikt" }
 rng-core = { group = "org.apache.commons", name = "commons-rng-core", version.ref = "rng" }
 rng-simple = { group = "org.apache.commons", name = "commons-rng-simple", version.ref = "rng" }
 rng-client = { group = "org.apache.commons", name = "commons-rng-client-api", version.ref = "rng" }

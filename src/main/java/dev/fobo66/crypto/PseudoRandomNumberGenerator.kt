@@ -19,15 +19,10 @@ class PseudoRandomNumberGenerator(
 ) {
     // used to generate parameters of congruential generators within modulus' range
     private val rand = RandomSource.MWC_256.create()
-    private var generatorSeed: Long
-
-    init {
-        generatorSeed =
-            if (seed == 0) {
-                RandomSource.createLong()
-            } else {
-                seed.toLong()
-            }
+    private var generatorSeed: Long = if (seed == 0) {
+        RandomSource.createLong()
+    } else {
+        seed.toLong()
     }
 
     /**

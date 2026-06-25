@@ -1,53 +1,49 @@
 package dev.fobo66.crypto
 
-import kotlinx.cli.ArgParser
-import kotlinx.cli.ArgType
-import kotlinx.cli.default
+import com.github.ajalt.clikt.core.CliktCommand
+import com.github.ajalt.clikt.core.main
+import com.github.ajalt.clikt.parameters.options.check
+import com.github.ajalt.clikt.parameters.options.default
+import com.github.ajalt.clikt.parameters.options.help
+import com.github.ajalt.clikt.parameters.options.option
+import com.github.ajalt.clikt.parameters.transform.theme
+import com.github.ajalt.clikt.parameters.types.choice
+import com.github.ajalt.clikt.parameters.types.int
 
 private const val DEFAULT_NUMBERS_COUNT = 10
 
-fun main(args: Array<String>) {
-    var randomNumber: Long
+class Lab4 : CliktCommand() {
+    val generatedNumbersCount by option("-n")
+        .int()
+        .default(DEFAULT_NUMBERS_COUNT)
+        .help { theme.info("Count of generated random numbers") }
+        .check { it > 0 }
+    val seed by option("-s", "--seed")
+        .int()
+        .default(0)
+        .help { theme.info("Initial value (\"seed\") for random number generator") }
+    val formula by option("-f", "--formula")
+        .choice("Linear" to Formula.Linear, "Quadratic" to Formula.Quadratic, "Cubic" to Formula.Cubic)
+        .default(Formula.Linear)
 
-    val parser = ArgParser("lab4")
+    override fun run() {
+        val generator = PseudoRandomNumberGenerator(seed)
 
-    val generatedNumbersCount by parser
-        .option(
-            ArgType.Int,
-            shortName = "n",
-            description = "Count of generated random numbers",
-        ).default(DEFAULT_NUMBERS_COUNT)
+        echo("Using $formula formula for generating random numbers...")
 
-    val seed by parser.option(
-        ArgType.Int,
-        shortName = "s",
-        fullName = "seed",
-        description = "Initial value (\"seed\") for random number generator",
-    )
+        var randomNumber: Long
 
-    val formula by parser
-        .option(
-            ArgType.Choice<Formula>(),
-            shortName = "f",
-            fullName = "formula",
-            description =
-                "Formula for random number generator to generate random numbers. " +
-                    "Can be either Linear, Quadratic or Cubic. Default value is Linear",
-        ).default(Formula.Linear)
-
-    parser.parse(args)
-
-    val generator = PseudoRandomNumberGenerator(seed ?: 0)
-
-    println("Using $formula formula for generating random numbers...")
-
-    repeat(generatedNumbersCount) {
-        randomNumber =
-            when (formula) {
-                Formula.Linear -> generator.computeLCG()
-                Formula.Quadratic -> generator.computeQuadraticLCG()
-                Formula.Cubic -> generator.computeCubicLCG()
-            }
-        println(randomNumber)
+        repeat(generatedNumbersCount) {
+            randomNumber =
+                when (formula) {
+                    Formula.Linear -> generator.computeLCG()
+                    Formula.Quadratic -> generator.computeQuadraticLCG()
+                    Formula.Cubic -> generator.computeCubicLCG()
+                }
+            echo(randomNumber)
+        }
     }
+
 }
+
+fun main(args: Array<String>) = Lab4().main(args)

@@ -13,6 +13,15 @@ class RandomNumberGeneratorTest {
     }
 
     @Test
+    fun `seed affects random numbers`() {
+        val generator = PseudoRandomNumberGenerator(0)
+        val generator2 = PseudoRandomNumberGenerator(42)
+        val firstNumber = generator.computeLCG()
+        val secondNumber = generator2.computeLCG()
+        assertNotEquals(firstNumber, secondNumber)
+    }
+
+    @Test
     fun `random numbers ion different modes are different`() {
         val generator = PseudoRandomNumberGenerator(0)
         val firstNumber = generator.computeLCG()
