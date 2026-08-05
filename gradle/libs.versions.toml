@@ -1,6 +1,6 @@
 [versions]
 clikt = "5.1.0"
-detekt = "2.0.0-alpha.5"
+detekt = "2.0.0-alpha.6"
 kotlin = "2.4.10"
 rng = "1.7"
 
