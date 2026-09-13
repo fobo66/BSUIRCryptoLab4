@@ -1,7 +1,7 @@
 [versions]
 clikt = "5.1.0"
 detekt = "2.0.0-alpha.6"
-kotlin = "2.4.10"
+kotlin = "2.4.20"
 rng = "1.7"
 
 [libraries]
